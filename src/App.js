@@ -1,4 +1,12 @@
 import React, { useState } from 'react';
+// Styles
+import GlobalStyle from './components/GlobalStyle';
+import Container from './components/Container/index';
+import Heading from './components/Heading/index';
+import InputField from './components/InputField/index.jsx';
+import ButtonSubmit from './components/ButtonSubmit/index';
+import Form from './components/Form/index'
+
 
 function App() {
 
@@ -33,19 +41,18 @@ function App() {
   
   return (
     <>
-    <h1>Find the lyrics to a song</h1>
-    <form name="test-url-form" action="/" method="GET">
+    <GlobalStyle />
+    <Heading as="h1">Find the lyrics to a song</Heading>
+    <Form name="test-url-form" action="/" method="GET">
       <br />
         <label htmlFor="artist">Artist: </label>
-        <input type="text" name="artist" id="kunstner-input" placeholder="Artist" onChange={event => handleNewArtist(event)}/>
-        <br />
+        <InputField type="text" name="artist" id="kunstner-input" placeholder="Artist" onChange={event => handleNewArtist(event)}/>
         <label htmlFor="song-title">Title: </label>
-        <input type="text" name="song-title" id="title-input" placeholder="Title" onChange={event => handleNewTitle(event)}/>
-        <br />
-        <button type="submit" onClick={event => handeClick(event)} >Find lyrics</button>
-      </form>
+        <InputField type="text" name="song-title" id="title-input" placeholder="Title" onChange={event => handleNewTitle(event)}/>
+        <ButtonSubmit type="submit" onClick={event => handeClick(event)} >Find lyrics</ButtonSubmit>
+      </Form>
 
-      <p>{responseData.lyrics}</p>
+      <Container as="p">{responseData.lyrics}</Container>
     </>
   )
 };
